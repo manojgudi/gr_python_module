@@ -31,14 +31,20 @@ class qa_square_ff (gr_unittest.TestCase):
         self.tb = None
 
     def test_001_t (self):
-    	src_data = (-2, 4, 5, 2, 1)
+    	src_data = (-2, 2, 5, 3, 1, 2, 3, 4)
 	expected_result = (4, 16, 25, 4, 1)
 
-	src = gr.vector_source_f(src_data)
+	src0 = gr.vector_source_f(src_data)
 	sqr = square3_ff()
+	
+	#Preload
+	sqr.input_config(1).preload_items = 1
+	
 	dst = gr.vector_sink_f()
 	
-	self.tb.connect(src, sqr)
+
+	self.tb.connect(src0, (sqr,0))
+	self.tb.connect((sqr,0), (sqr,1))
 	self.tb.connect(sqr,dst)
 	
 	self.tb.run()

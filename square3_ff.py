@@ -6,17 +6,22 @@ class square3_ff(gras.Block):
 	def __init__(self):
 		gras.Block.__init__(self,
 			name="square3_ff",
-			in_sig=[numpy.float32],
+			in_sig=[numpy.float32, numpy.float32],
 			out_sig=[numpy.float32])
 
 
 	def work(self, input_items, output_items):
 		
-		n = min(len(input_items[0]), len(output_items[0]))
+		n = min(len(input_items[0]), len(output_items[0]), len(input_items[1]))
+		
+		print n,"min"
+		
 		in0 = input_items[0]
+		in1 = input_items[1]
 		out = output_items[0]
 		
-		out[:n] = in0[:n] * in0[:n]
+		out[:n] = in0[:n] + in1[:n]
 
-		self.consume(0,n)
-		self.produce(0,n)
+		self.consume(0,n) # Consume from port 0 input_items
+		self.consume(1,n) # Consume from port 1 input_items
+		self.produce(0,n) # Produce from port 0 output_items
