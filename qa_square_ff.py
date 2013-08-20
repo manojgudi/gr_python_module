@@ -22,6 +22,7 @@ from gnuradio import gr, gr_unittest
 #import mymod_swig as mymod
 from square3_ff import square3_ff
 
+
 class qa_square_ff (gr_unittest.TestCase):
 
     def setUp (self):
@@ -32,27 +33,25 @@ class qa_square_ff (gr_unittest.TestCase):
 
     def test_001_t (self):
     	src_data = (-2, 2, 5, 3, 1, 2, 3, 4)
-	expected_result = (4, 16, 25, 4, 1)
-
+	expected_result = (-2.0, 0.0, 5.0, 8.0, 9.0, 11.0, 14.0, 18.0)
+	
 	src0 = gr.vector_source_f(src_data)
 	sqr = square3_ff()
 	
 	#Preload
-	sqr.input_config(1).preload_items = 1
-	
+	sqr.input_config(1).preload_items = 3
 	dst = gr.vector_sink_f()
 	
-
-	self.tb.connect(src0, (sqr,0))
-	self.tb.connect((sqr,0), (sqr,1))
-	self.tb.connect(sqr,dst)
+	self.tb.connect(src0, (sqr,0)) # src0(vector_source) -> sqr_input_0
+	self.tb.connect((sqr,0), (sqr,1)) # sqr_output_0 -> sqr_input_1
+	self.tb.connect(sqr,dst) # sqr_output_0 -> dst (vector_source)
 	
 	self.tb.run()
 
 	result_data = dst.data()
 	print str(result_data), "Result data"
 	print str(expected_result), "expected "
-	#self.assertFloatTupleAlmostEqual(expected_result, result_data, 6)
+	#self.assertFloatTuplesAlmostEqual(expected_result, result_data, 6)
 
 
 if __name__ == '__main__':
