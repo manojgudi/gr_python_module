@@ -39,13 +39,13 @@ class qa_square_ff (gr_unittest.TestCase):
 	sqr = square3_ff()
 	
 	#Preload
-	sqr.input_config(1).preload_items = 3
+	sqr.input_config(1).preload_items = 1
 	dst = gr.vector_sink_f()
 	
 	self.tb.connect(src0, (sqr,0)) # src0(vector_source) -> sqr_input_0
-	self.tb.connect((sqr,0), (sqr,1)) # sqr_output_0 -> sqr_input_1
+	#self.tb.connect((sqr,0), (sqr,1)) # sqr_output_0 -> sqr_input_1
 	self.tb.connect(sqr,dst) # sqr_output_0 -> dst (vector_source)
-	
+
 	self.tb.run()
 
 	result_data = dst.data()
