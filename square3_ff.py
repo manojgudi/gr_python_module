@@ -21,7 +21,7 @@ class square3_ff(gras.Block):
 		#Processing 
 		# Assuming n = 1 input_config(0)=1
 		
-		out[:n] = discrete_sim(2,3,0.5,1,2,str(in0[:n][0]))
+		out[:n] = discrete_sim(1,2,1,3,2,str(in0[:n][0]))
 		
 		print out[:n], in0[:n]
 

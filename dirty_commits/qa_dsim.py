@@ -32,12 +32,17 @@ class qa_dsim (gr_unittest.TestCase):
         self.tb = None
 
     def test_001_t (self):
-    	src_data = (-2, 2, 5, 3, 1, 2, 3, 4)
+    	
+    	src_data = [0]*100
+	src_data[50] = 1
+	src_data = tuple(src_data)
+ 	
 	expected_result = (-2.0, 0.0, 5.0, 8.0, 9.0, 11.0, 14.0, 18.0)
 	
 	src0 = gr.vector_source_f(src_data)
 	sqr = dsim()
-	
+	sqr.set_parameters(1,1, 0.1, 2, 1, 10)
+
 	#Preload
 	sqr.input_config(1).preload_items = 1
 	dst = gr.vector_sink_f()
@@ -51,9 +56,13 @@ class qa_dsim (gr_unittest.TestCase):
 	result_data = dst.data()
 	print str(result_data), "Result data"
 	print str(expected_result), "expected "
-	#self.assertFloatTuplesAlmostEqual(expected_result, result_data, 6)
-
+	
+	#import  matplotlib.pyplot as plt
+    	#plt.plot(result_data)
+    	#plt.show()
+   	#self.assertFloatTuplesAlmostEqual(expected_result, result_data, 6)
+	
 
 if __name__ == '__main__':
     gr_unittest.main()
-    #gr_unittest.run(qa_dsim, "qa_dsim.xml")
+   #gr_unittest.run(qa_dsim, "qa_dsim.xml")

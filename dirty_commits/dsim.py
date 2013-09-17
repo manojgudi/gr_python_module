@@ -7,13 +7,19 @@ class dsim(gras.Block):
 		gras.Block.__init__(self,
 			name="dsim",
 			in_sig=[numpy.float32],
-			out_sig=[numpy.float32])
+			out_sig=[numpy.float32])	
 
+	def set_parameters(self,a,b,c,d,e,f):
+		self.param1 = a #n0
+		self.param2 = b #n1
+		self.param3 = c #st
+		self.param4 = d #d0
+		self.param5 = e #d1
+		self.n = f #window
 
 	def work(self, input_items, output_items):
 		
 		#n = min(len(input_items[0]), len(output_items[0]))
-		n=1
 		in0 = input_items[0]
 		out = output_items[0]
 		
@@ -21,10 +27,10 @@ class dsim(gras.Block):
 		#Processing 
 		# Assuming n = 1 input_config(0)=1
 		
-		out[:n] = discrete_sim(2,3,0.5,1,2,str(in0[:n][0]))
+		out[:self.n] = discrete_sim(self.param1, self.param2, self.param3, self.param4,
+					self.param5,in0[:self.n])
 		
-		print out[:n], in0[:n]
+		print out[:self.n], in0[:self.n]
 
-		self.consume(0,n) # Consume from port 0 input_items
-		self.consume(1,n) # Consume from port 1 input_items
-		self.produce(0,n) # Produce from port 0 output_items
+		self.consume(0,1) # Consume from port 0 input_items
+		self.produce(0,self.n) # Produce from port 0 output_items

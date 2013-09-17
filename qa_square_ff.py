@@ -32,7 +32,7 @@ class qa_square_ff (gr_unittest.TestCase):
         self.tb = None
 
     def test_001_t (self):
-    	src_data = (-2, 2, 5, 3, 1, 2, 3, 4)
+    	src_data = (0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)
 	expected_result = (-2.0, 0.0, 5.0, 8.0, 9.0, 11.0, 14.0, 18.0)
 	
 	src0 = gr.vector_source_f(src_data)
