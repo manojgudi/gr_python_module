@@ -44,7 +44,6 @@ class qa_dsim (gr_unittest.TestCase):
 	sqr.set_parameters(1,1, 0.1, 2, 1, 10)
 
 	#Preload
-	sqr.input_config(1).preload_items = 1
 	dst = gr.vector_sink_f()
 	
 	self.tb.connect(src0, (sqr,0)) # src0(vector_source) -> sqr_input_0
@@ -54,8 +53,9 @@ class qa_dsim (gr_unittest.TestCase):
 	self.tb.run()
 
 	result_data = dst.data()
-	print str(result_data), "Result data"
-	print str(expected_result), "expected "
+	
+	#print str(result_data), "Result data"
+	#print str(expected_result), "expected "
 	
 	#import  matplotlib.pyplot as plt
     	#plt.plot(result_data)

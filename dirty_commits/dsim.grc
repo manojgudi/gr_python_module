@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Tue Sep 17 19:46:12 2013</timestamp>
+  <timestamp>Wed Sep 18 00:26:21 2013</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -84,6 +84,41 @@
     </param>
   </block>
   <block>
+    <key>gr_vector_source_x</key>
+    <param>
+      <key>id</key>
+      <value>gr_vector_source_x_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>vector</key>
+      <value>(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)</value>
+    </param>
+    <param>
+      <key>repeat</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>140</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(116, 85)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>gr_vector_sink_x</key>
     <param>
       <key>id</key>
@@ -99,11 +134,11 @@
     </param>
     <param>
       <key>vlen</key>
-      <value>15</value>
+      <value>140</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(676, 161)</value>
+      <value>(837, 136)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -130,11 +165,7 @@
     </param>
     <param>
       <key>vlen</key>
-      <value>15</value>
-    </param>
-    <param>
-      <key>preload</key>
-      <value>1</value>
+      <value>140</value>
     </param>
     <param>
       <key>option1</key>
@@ -142,27 +173,27 @@
     </param>
     <param>
       <key>option2</key>
-      <value>2</value>
-    </param>
-    <param>
-      <key>option3</key>
       <value>1</value>
     </param>
     <param>
-      <key>option4</key>
-      <value>3</value>
+      <key>option3</key>
+      <value>0.1</value>
     </param>
     <param>
-      <key>option5</key>
+      <key>option4</key>
       <value>2</value>
     </param>
     <param>
+      <key>option5</key>
+      <value>1</value>
+    </param>
+    <param>
       <key>option6</key>
-      <value>15</value>
+      <value>140</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(491, 114)</value>
+      <value>(622, 49)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -170,10 +201,10 @@
     </param>
   </block>
   <block>
-    <key>gr_vector_source_x</key>
+    <key>extras_subtract</key>
     <param>
       <key>id</key>
-      <value>gr_vector_source_x_0</value>
+      <value>extras_subtract_0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -181,23 +212,23 @@
     </param>
     <param>
       <key>type</key>
-      <value>complex</value>
+      <value>fc32_fc32</value>
     </param>
     <param>
-      <key>vector</key>
-      <value>(0,0,0,0,0,0,0,0,0,0,1,0,0,0,0)</value>
-    </param>
-    <param>
-      <key>repeat</key>
-      <value>True</value>
+      <key>num_inputs</key>
+      <value>2</value>
     </param>
     <param>
       <key>vlen</key>
-      <value>15</value>
+      <value>140</value>
+    </param>
+    <param>
+      <key>preload</key>
+      <value>20</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(211, 147)</value>
+      <value>(394, 100)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -205,7 +236,7 @@
     </param>
   </block>
   <connection>
-    <source_block_id>gr_vector_source_x_0</source_block_id>
+    <source_block_id>extras_subtract_0</source_block_id>
     <sink_block_id>scimod_dsim_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
@@ -215,5 +246,17 @@
     <sink_block_id>gr_vector_sink_x_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>gr_vector_source_x_0</source_block_id>
+    <sink_block_id>extras_subtract_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>scimod_dsim_0</source_block_id>
+    <sink_block_id>extras_subtract_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
   </connection>
 </flow_graph>

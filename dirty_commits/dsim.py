@@ -19,7 +19,7 @@ class dsim(gras.Block):
 
 	def work(self, input_items, output_items):
 		
-		#n = min(len(input_items[0]), len(output_items[0]))
+		#self.n = min(len(input_items[0]), len(output_items[0]))
 		in0 = input_items[0]
 		out = output_items[0]
 		
@@ -29,8 +29,7 @@ class dsim(gras.Block):
 		
 		out[:self.n] = discrete_sim(self.param1, self.param2, self.param3, self.param4,
 					self.param5,in0[:self.n])
-		
 		print out[:self.n], in0[:self.n]
-
-		self.consume(0,1) # Consume from port 0 input_items
+		
 		self.produce(0,self.n) # Produce from port 0 output_items
+		self.consume(0,self.n) # Consume from port 0 input_items
