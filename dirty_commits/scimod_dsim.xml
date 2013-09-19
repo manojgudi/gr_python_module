@@ -12,7 +12,7 @@
 
     <import>import scimod</import>
     <make>scimod.dsim()
-self.$(id).set_parameters($n0, $n1, $step, $d0, $d1, $window)
+self.$(id).set_parameters($P, $I, $D, $n0, $n1, $step, $d0, $d1, $window)
     </make>
     <param>
         <name>IO Type</name>
@@ -43,6 +43,25 @@ self.$(id).set_parameters($n0, $n1, $step, $d0, $d1, $window)
     <!--
     Desimulation options
     -->
+     <param>
+        <name>Controller Gain(P)</name>
+        <key>P</key>
+        <value>0</value>
+        <type>real</type>
+    </param>
+    <param>
+        <name>Tau_I(I)</name>
+        <key>I</key>
+        <value>0</value>
+        <type>real</type>
+    </param>
+    <param>
+        <name>Tau_D(D)</name>
+        <key>D</key>
+        <value>0</value>
+        <type>real</type>
+    </param>
+    
     <param>
         <name>n0</name>
         <key>n0</key>
