@@ -2,7 +2,7 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Sep 18 00:26:22 2013
+# Generated: Wed Sep 18 17:18:46 2013
 ##################################################
 
 from gnuradio import eng_notation
@@ -36,14 +36,14 @@ class top_block(grc_wxgui.top_block_gui):
 		self.gr_vector_source_x_0 = gr.vector_source_c(((0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)), False, 140)
 		self.gr_vector_sink_x_0 = gr.vector_sink_c(140)
 		self.extras_subtract_0 = grextras.Add.fc32_fc32(140)
-		self.extras_subtract_0.input_config(0).preload_items = 20
+		self.extras_subtract_0.input_config(0).preload_items = 1
 
 		##################################################
 		# Connections
 		##################################################
-		self.connect((self.extras_subtract_0, 0), (self.scimod_dsim_0, 0))
 		self.connect((self.scimod_dsim_0, 0), (self.gr_vector_sink_x_0, 0))
 		self.connect((self.gr_vector_source_x_0, 0), (self.extras_subtract_0, 0))
+		self.connect((self.extras_subtract_0, 0), (self.scimod_dsim_0, 0))
 		self.connect((self.scimod_dsim_0, 0), (self.extras_subtract_0, 1))
 
 

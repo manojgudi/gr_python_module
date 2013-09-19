@@ -12,7 +12,7 @@
 
     <import>import scimod</import>
     <make>scimod.dsim()
-self.$(id).set_parameters($option1, $option2, $option3, $option4, $option5, $option6)
+self.$(id).set_parameters($n0, $n1, $step, $d0, $d1, $window)
     </make>
     <param>
         <name>IO Type</name>
@@ -44,43 +44,43 @@ self.$(id).set_parameters($option1, $option2, $option3, $option4, $option5, $opt
     Desimulation options
     -->
     <param>
-        <name>option1</name>
-        <key>option1</key>
+        <name>n0</name>
+        <key>n0</key>
         <value>0</value>
         <type>real</type>
     </param>
      
      <param>
-        <name>option2</name>
-        <key>option2</key>
+        <name>n1</name>
+        <key>n1</key>
         <value>0</value>
         <type>real</type>
     </param>
 
     <param>
-        <name>option3</name>
-        <key>option3</key>
+        <name>step</name>
+        <key>step</key>
         <value>0</value>
         <type>real</type>
     </param>
 
     <param>
-        <name>option4</name>
-        <key>option4</key>
+        <name>d0</name>
+        <key>d0</key>
         <value>0</value>
         <type>real</type>
     </param>
     
     <param>
-        <name>option5</name>
-        <key>option5</key>
+        <name>d1</name>
+        <key>d1</key>
         <value>0</value>
         <type>real</type>
     </param>
      
     <param>
-        <name>option6</name>
-        <key>option6</key>
+        <name>window</name>
+        <key>window</key>
         <value>0</value>
         <type>real</type>
     </param>
