@@ -37,8 +37,8 @@ class generic(gras.Block):
 		# If the window is greater than 1,  input_items[i][:self.n] looks like [1   2   3   4   5] which is err for python since it requires comma as delimiters 
 			else:	
 				print str(input_items[i][:self.n])
-				out_eval_string = out_eval_string + (str(input_items[i][:self.n])).replace("\n"," ").replace("  ","").replace(" "," ,").replace(".]","]")  + ","  # Replace 10spaces with a singe comma
-		
+				out_eval_string = out_eval_string + (str(input_items[i][:self.n]).tolist())  + ","  # Replace 10spaces with a singe comma
+				
 		out_eval_string = out_eval_string.rstrip(",") + ')")'
 		print "OUT",str(out_eval_string)
 		out = eval(out_eval_string)
