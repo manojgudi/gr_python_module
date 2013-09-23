@@ -41,7 +41,7 @@ class qa_dsim (gr_unittest.TestCase):
 	
 	src0 = gr.vector_source_f(src_data)
 	sqr = dsim()
-	sqr.set_parameters(2,0.5,0.6,1,1, 0.1, 2, 1, 10)
+	sqr.set_parameters(2,0.5,0.6,1,1, 0.1, 2, 1, 1100)
 
 	#Preload
 	sqr.input_config(1).preload_items = 1

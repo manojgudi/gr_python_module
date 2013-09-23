@@ -17,7 +17,7 @@ class generic(gras.Block):
 	# For cases like -> input = [3 , 4, 5 ,6] & window = 3
 	def isIntegralWin(self, input_item, window):
 		if (len(input_item) % window ):
-			raise Exception("Value of Window should be integral of length of input items")
+			raise Exception("Value of Window should be an integral value of length of input items")
 			
 		
 	def work(self, input_items, output_items):
