@@ -28,8 +28,7 @@ class generic(gras.Block):
 		# Check number of input_instances
 		n_input_items = len(input_items)
 		
-		# Create Output Instances
-		out = output_items[0]
+		# Create output string instance which will be evaluated
 		out_eval_string = 'eval("Sci.'+self.func_name+'('
 		
 		# Iterate for n_input_items
@@ -47,9 +46,14 @@ class generic(gras.Block):
 						
 		out_eval_string = out_eval_string.rstrip(",") + ')")'
 		print "STRING  ",str(out_eval_string)
-		output_items[0][:] = eval(out_eval_string)
 		
-		print "OUT",out
+
+		if n_input_items == 1 and self.n == 1:
+			output_items[0][:] = eval(out_eval_string)
+		else:
+			output_items[0] = eval(out_eval_string)
+
+		print "OUT",output_items[0]
 		
 		#Write a for loop for n_inputs
 		for i in range(n_input_items):
