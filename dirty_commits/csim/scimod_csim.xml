@@ -9,10 +9,10 @@ CSIM Block:
 <block>
     <name>csim</name>
     <key>scimod_csim</key>
-    <category>csimod</category>
+    <category>scimod</category>
 
-    <import>import csimod</import>
-    <make>csimod.csim()
+    <import>import scimod</import>
+    <make>scimod.csim()
 self.$(id).set_parameters($P, $I, $D, $n0, $n1, $d0, $d1, $window)
     </make>
     <param>
@@ -76,15 +76,7 @@ self.$(id).set_parameters($P, $I, $D, $n0, $n1, $d0, $d1, $window)
         <value>0</value>
         <type>real</type>
     </param>
-<!--	
-    <param>
-        <name>step</name>
-        <key>step</key>
-        <value>0</value>
-	<type>real</type>
-    </param>
--->
-    <param>
+   <param>
         <name>d0</name>
         <key>d0</key>
         <value>0</value>
@@ -125,7 +117,7 @@ self.$(id).set_parameters($P, $I, $D, $n0, $n1, $d0, $d1, $window)
     </source>
     <doc>
 
-Discrete time simulation
+Continuous time simulation
 
 out[i] = in0[i] + in1[i] + in2[i]
 

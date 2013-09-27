@@ -16,9 +16,8 @@ class csim(gras.Block):
                 self.param3 = d
                 self.param4 = a #n0
                 self.param5 = b #n1
-                #self.param6 = c #st
-                self.param7 = d1 #d0
-		self.param8 = e #d1
+                self.param6 = d1 #d0
+		self.param7 = e #d1
                 self.n = f #window
 
         def isIntegralWin(self, input_item, window):
@@ -36,14 +35,9 @@ class csim(gras.Block):
                 # Assuming n = 1 input_config(0)=1
 
 		out[:self.n] = csim(self.param1, self.param2, self.param3, self.param4,
-                                        self.param5, self.param7, self.param8, in0[:self.n].tolist()) # IMP: in0[:self.n].tolist() passes a python array, without which window cannot be raised above certain value | numpy.array bug
+                                        self.param5, self.param6, self.param7, in0[:self.n].tolist()) # IMP: in0[:self.n].tolist() passes a python array, without which window cannot be raised above certain value | numpy.array bug
 
-                print out[:self.n], in0[:self.n]
-		y = out[:self.n].tolist()
-		print y
-		#import matplotlib.pyplot as plt
-		#plt.plot(y)
-		#plt.show()
+                print "OUT", out[:self.n]
 		
                 self.consume(0,self.n) # Consume from port 0 input_items
                 self.produce(0,self.n) # Produce from port 0 output_items
