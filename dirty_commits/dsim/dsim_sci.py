@@ -28,7 +28,9 @@ def discrete_sim(P,I,D,n0,n1,st,d0,d1,u):
 if __name__ == "__main__":
 	u = [0]*100
 	u[50] = 1
-	#out = discrete_sim(2,0.5,0.6,1,1,0.1,2,1,u)
+	out = discrete_sim(2,0.5,0.6,1,1,0.1,2,1,u)
+	print out	
+
 	#import matplotlib.pyplot as plt
 	#plt.plot(out)
 	#plt.show()
