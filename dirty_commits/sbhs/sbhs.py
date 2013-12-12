@@ -106,7 +106,7 @@ class Sbhs:
 
         try:
             self._write(chr(INCOMING_HEAT))
-            print "verify: "+str(self._write(chr(val)))
+            #print "verify: "+str(self._write(chr(val)))
             return True
         except:
             print 'Error: cannot set heat for machine id %d' % self.machine_id

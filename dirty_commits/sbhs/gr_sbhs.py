@@ -50,7 +50,7 @@ class gr_sbhs(gras.Block):
 		# Get temperature
 		output_items[0] =  self.new_device.getTemp()
 
-		print output_items[0]
+		print "Temperature",output_items[0]
 
 		#Write a for loop for n_inputs
 		for i in range(len(input_items)):
