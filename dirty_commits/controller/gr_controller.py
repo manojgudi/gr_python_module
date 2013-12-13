@@ -1,6 +1,6 @@
 import gras
 import numpy
-from daq import *
+from que import *
 
 class sbhs_controller(gras.Block):
 
