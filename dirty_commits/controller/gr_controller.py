@@ -2,17 +2,17 @@ import gras
 import numpy
 from daq import *
 
-class dsim(gras.Block):
+class sbhs_controller(gras.Block):
 
 	def __init__(self):
 		gras.Block.__init__(self,
-			name="dsim",
+			name="sbhs_controller",
 			in_sig=[numpy.float32],
 			out_sig=[numpy.float32])	
 		self.q1 = Queue(3)
 		#self.q2 = Queue(3)
 		#self.q3 = Queue(3)	
-
+		self.err1 = 0
 		self.t_1 = 0
 	def set_parameters(self,p,i,d,a,b,f):
 		self.proportional = p 
@@ -31,50 +31,39 @@ class dsim(gras.Block):
 		in0 = input_items[0][0]
 		out = output_items[0]
 		
-		self.err1 = in0 - self.setpt
+		#print "OUT", out[:1]
 		
-		#print 't-1',self.t_1
-		#self.q1.push(self.t_1)
-		#self.q1.push(self.err1) # Should this be in0?
-		
-		'''
-		self.q2.push(in0)
-		
-		#self.q2.pop()
-		self.q3.push(in0)
-		self.q3.push(in0)
-		self.q3.pop()		
-		'''
-		
-		self.t_0 = in0
+		self.err1 = (in0- self.setpt)
 
-		self.q1.push(in0)
+		self.q1.push(self.t_1)
+		self.q1.push(self.err1) # Should this be in0?
+		
+		self.t_0 = self.err1
 		self.t_1 = self.q1.pop()
 		self.t_2 = self.q1.pop()
-		self.t_3 = self.q1.pop()
-		self.err1 = self.t_3
 
-
-		self.err2 = self.t_2
-		self.err3 = self.t_1
-
-		#from dsim_sci import csim
+		'''
+		print "t0", self.t_0
+		print "t-1", self.t_1
+		print "t-2", self.t_2
+		print "-------------------"
+		'''
 		#Processing 
 		# Assuming n = 1 input_config(0)=1
 		
 		out[:1] = (self.proportional * (self.err1 - self.t_1)
-                	+(self.delt/self.integtime)*self.err1+ 
-			(self.derivtime/self.delt)*(self.err1 - 2*self.t_1
+                	+(self.delt/self.integtime)*self.err1
+			+(self.derivtime/self.delt)*(self.err1 - 2*self.t_1
 			+self.t_2 ))
 		
-		#print out, in0
-		print 's',self.setpt
-		print 'in',in0
-		print 'Err',self.err1
+		print out, in0
+		#print 's',self.setpt
+		#print 'in',in0
+		#print 'Err',self.err1
 			
 	
-		output_items[0] = output_items[0].tolist()
-		output_items[0].append(out)
+	#	output_items[0] = output_items[0].tolist()
+	#	output_items[0].append(out)
 
 		#print output_items[0]
 		self.consume(0,1) # Consume from port 0 input_items

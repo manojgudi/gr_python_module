@@ -54,8 +54,6 @@ class qa_dsim (gr_unittest.TestCase):
 	self.tb.run()
 
 	result_data = dst.data()
-	#print str(result_data), "Result data"
-	#print str(expected_result), "expected "
 	
 	
 	import  matplotlib.pyplot as plt
