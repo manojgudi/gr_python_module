@@ -40,10 +40,8 @@ class gr_sbhs(gras.Block):
 
 		# Assuming input_items[0] and input_items[1] have same LENGTH
 		for heat_items, fan_items in zip(input_items[0], input_items[1]):
-			#Setting Heat
-			if heat_items >= 100:
-				heat_items = 40
 			
+			print "HEAT WRITTEN", heat_items
 			self.new_device.setHeat(heat_items)
 			time.sleep(0.5)
 			self.new_device.setFan(fan_items)

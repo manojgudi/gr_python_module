@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Sat Dec 14 11:36:47 2013</timestamp>
+  <timestamp>Sat Dec 14 12:58:38 2013</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -154,41 +154,6 @@
     </param>
   </block>
   <block>
-    <key>gr_vector_source_x</key>
-    <param>
-      <key>id</key>
-      <value>gr_vector_source_x_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>float</value>
-    </param>
-    <param>
-      <key>vector</key>
-      <value>30</value>
-    </param>
-    <param>
-      <key>repeat</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(787, 231)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>sbhs_controller</key>
     <param>
       <key>id</key>
@@ -208,7 +173,7 @@
     </param>
     <param>
       <key>a</key>
-      <value>0.1</value>
+      <value>1</value>
     </param>
     <param>
       <key>p</key>
@@ -264,6 +229,41 @@
     <param>
       <key>_coordinate</key>
       <value>(31, 100)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>gr_vector_source_x</key>
+    <param>
+      <key>id</key>
+      <value>gr_vector_source_x_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>vector</key>
+      <value>60</value>
+    </param>
+    <param>
+      <key>repeat</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(787, 231)</value>
     </param>
     <param>
       <key>_rotation</key>
