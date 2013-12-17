@@ -58,7 +58,7 @@ class qa_dsim (gr_unittest.TestCase):
 	
 	import  matplotlib.pyplot as plt
     	plt.plot(result_data)
-	print "result", result_data
+	#print "result", result_data
     	plt.show()
    	#self.assertFloatTuplesAlmostEqual(expected_result, result_data, 6)
 	

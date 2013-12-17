@@ -50,22 +50,22 @@ class sbhs_controller(gras.Block):
 		self.o_1 = self.q2.pop()
 		
 
-		print "O zero", self.o_0
-		print "O one", self.o_1
+	#	print "O zero", self.o_0
+	#	print "O one", self.o_1
 
-		'''
+	
 		print "t0", self.t_0
 		print "t-1", self.t_1
 		print "t-2", self.t_2
 		print "-------------------"
-		'''
+		
 		#Processing 
 		# Assuming n = 1 input_config(0)=1
 		
 		self.o_0 = ((self.proportional * (in0 - self.t_1)
                 	+(self.delt/self.integtime)*in0
 			+(self.derivtime/self.delt)*(in0 - 2*self.t_1
-			+self.t_2 )) + self.o_1 ) * 7/10
+			+self.t_2 )) + self.o_1 )*0.9 
 		
 		out[:1] = self.o_0
 		#print out, in0

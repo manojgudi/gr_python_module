@@ -2,7 +2,7 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Dec 13 22:33:20 2013
+# Generated: Tue Dec 17 14:55:40 2013
 ##################################################
 
 from gnuradio import eng_notation
@@ -27,8 +27,8 @@ class top_block(grc_wxgui.top_block_gui):
 		##################################################
 		# Blocks
 		##################################################
-		self.gr_vector_source_x_0_0 = gr.vector_source_f((40,50,60), False, 1)
-		self.gr_vector_source_x_0 = gr.vector_source_f((4,5,6), False, 1)
+		self.gr_vector_source_x_0_0 = gr.vector_source_f((40,50,60), True, 1)
+		self.gr_vector_source_x_0 = gr.vector_source_f((4,5,6), True, 1)
 		self.gr_vector_sink_x_0 = gr.vector_sink_f(1)
 		self.gr_sbhs_0 = gr_sbhs.gr_sbhs()
 		self.gr_sbhs_0.set_parameters(1)

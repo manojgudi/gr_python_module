@@ -29,7 +29,7 @@ class generic(gras.Block):
 		
 		# Check number of input_instances
 		n_input_items = len(input_items)
-		
+	
 		# Create output string instance which will be evaluated
 		out_eval_string = 'eval("Sci.'+self.func_name+'('
 		

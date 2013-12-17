@@ -47,10 +47,10 @@ class gr_sbhs(gras.Block):
 			time.sleep(1)
 
 
-		# Get temperature
-		output_items[0][:1] =  self.new_device.getTemp()
+			# Get temperature
+			output_items[0][:1] =  self.new_device.getTemp()
 
-		print "Temperature",output_items[0][:1]
+			print "Temperature",output_items[0][:1]
 
 		#Write a for loop for n_inputs
 		for i in range(len(input_items)):
