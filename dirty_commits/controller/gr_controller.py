@@ -51,10 +51,10 @@ class sbhs_controller(gras.Block):
 		#Processing 
 		# Assuming n = 1 input_config(0)=1
 		
-		out[:1] = (self.proportional * (in0 - self.t_1)
+		out[:1] = (self.proportional * ((in0-self.setpt) - (self.t_1-self.setpt)
                 	+(self.delt/self.integtime)*in0
-			+(self.derivtime/self.delt)*(in0 - 2*self.t_1
-			+self.t_2 ))
+			+(self.derivtime/self.delt)*((in0-self.setpt) - 2*(self.t_1-self.setpt)
+			+(self.t_2-self.setpt) ))
 		
 		print out, in0
 		#print 's',self.setpt
