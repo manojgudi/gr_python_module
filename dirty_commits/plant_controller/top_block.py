@@ -2,7 +2,7 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Top Block
-# Generated: Tue Dec 17 14:45:47 2013
+# Generated: Wed Dec 18 01:19:52 2013
 ##################################################
 
 from gnuradio import eng_notation
@@ -30,11 +30,11 @@ class top_block(grc_wxgui.top_block_gui):
 		# Blocks
 		##################################################
 		self.sbhs_controller_0 = gr_controller.sbhs_controller()
-		self.sbhs_controller_0.set_parameters(2, 1, 2, 1, 30, 1)
+		self.sbhs_controller_0.set_parameters(4, 1, 2, 1, 30, 1)
 		    
 		self.grex_subtract_0 = gras.make('/grex/subtract_v_f32_f32', 1)
 		self.grex_subtract_0.set_preload((1, ))
-		self.gr_vector_source_x_0_0 = gr.vector_source_f((40, ), True, 1)
+		self.gr_vector_source_x_0_0 = gr.vector_source_f((100, ), True, 1)
 		self.gr_sbhs_0 = gr_sbhs.gr_sbhs()
 		self.gr_sbhs_0.set_parameters(1)
 		    

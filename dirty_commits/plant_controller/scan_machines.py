@@ -1,4 +1,4 @@
-#!/usb/bin/python
+#!/usr/bin/python
 import sbhs
 import os
 import sys
