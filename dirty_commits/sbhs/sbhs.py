@@ -2,7 +2,8 @@ import serial
 import os
 from time import localtime, strftime, sleep
 
-MAP_FILE = '/var/sbhspyserver/sbhshw/map_machine_ids.txt'
+MAP_FILE = './map_machine_ids.txt'
+#MAP_FILE = '/var/sbhspyserver/sbhshw/map_machine_ids.txt'
 LOG_FILE = '/var/sbhspylog/sbhserr.log'
 
 OUTGOING_MACHINE_ID  = 252
@@ -51,7 +52,7 @@ class Sbhs:
                 self.log('cannot locate the USB device in the map table for machine id %d' % self.machine_id, 'ERROR')
                 return False
         except:
-            #map_file.close()
+            map_file.close()
             print 'Error: cannot get the USB device path for the machine id %d' % self.machine_id
             self.log('cannot get the USB device path for the machine id %d' % self.machine_id, 'ERROR')
             return False
@@ -106,7 +107,7 @@ class Sbhs:
 
         try:
             self._write(chr(INCOMING_HEAT))
-            print "verify: "+str(self._write(chr(val)))
+            self._write(chr(val))
             return True
         except:
             print 'Error: cannot set heat for machine id %d' % self.machine_id

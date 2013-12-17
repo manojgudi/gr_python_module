@@ -5,8 +5,8 @@ import time
 from sbhs import *
 from scan_machines import *
 
-ser = serial.Serial('/dev/ttyUSB0', baudrate=9600, timeout=1)
-ser.open()
+#ser = serial.Serial('/dev/ttyUSB0', baudrate=9600, timeout=1)
+#ser.open()
 
 class gr_sbhs(gras.Block):
 
@@ -18,7 +18,7 @@ class gr_sbhs(gras.Block):
 		
 		# SBHS init
 		self.new_device = Sbhs()
-		self.new_device.connect(1)
+		self.new_device.connect(42)
 		self.new_device.connect_device(0)
 
 
@@ -44,12 +44,10 @@ class gr_sbhs(gras.Block):
 			self.new_device.setHeat(heat_items)
 			time.sleep(0.5)
 			self.new_device.setFan(fan_items)
-			time.sleep(1)
-
-
+			time.sleep(0.5)
+			
 			# Get temperature
 			output_items[0][:1] =  self.new_device.getTemp()
-
 			print "Temperature",output_items[0][:1]
 
 		#Write a for loop for n_inputs
