@@ -10,9 +10,11 @@ class sbhs_controller(gras.Block):
 			in_sig=[numpy.float32],
 			out_sig=[numpy.float32])	
 		self.q1 = Queue(3)
-		#self.q2 = Queue(3)
+		self.q2 = Queue(2)
 		#self.q3 = Queue(3)	
 		self.t_1 = 0
+		
+		self.o_0 = 0
 
 	def set_parameters(self,p,i,d,a,b,f):
 		self.proportional = p 
@@ -38,25 +40,35 @@ class sbhs_controller(gras.Block):
 		self.q1.push(self.t_1)
 		self.q1.push(in0) # Should this be in0?
 		
+		self.q2.push(self.o_0)
+
+
 		self.t_0 = in0
 		self.t_1 = self.q1.pop()
 		self.t_2 = self.q1.pop()
+		
+		self.o_1 = self.q2.pop()
+		
 
-		'''
+	#	print "O zero", self.o_0
+	#	print "O one", self.o_1
+
+	
 		print "t0", self.t_0
 		print "t-1", self.t_1
 		print "t-2", self.t_2
 		print "-------------------"
-		'''
+		
 		#Processing 
 		# Assuming n = 1 input_config(0)=1
 		
-		out[:1] = (self.proportional * ((in0-self.setpt) - (self.t_1-self.setpt)
+		self.o_0 = ((self.proportional * (in0 - self.t_1)
                 	+(self.delt/self.integtime)*in0
-			+(self.derivtime/self.delt)*((in0-self.setpt) - 2*(self.t_1-self.setpt)
-			+(self.t_2-self.setpt) ))
+			+(self.derivtime/self.delt)*(in0 - 2*self.t_1
+			+self.t_2 )) + self.o_1 )*0.9 
 		
-		print out, in0
+		out[:1] = self.o_0
+		#print out, in0
 		#print 's',self.setpt
 		#print 'in',in0
 		#print 'Err',self.err1

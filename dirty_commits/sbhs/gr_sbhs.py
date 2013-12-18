@@ -5,9 +5,6 @@ import time
 from sbhs import *
 from scan_machines import *
 
-#ser = serial.Serial('/dev/ttyUSB0', baudrate=9600, timeout=1)
-#ser.open()
-
 class gr_sbhs(gras.Block):
 
 	def __init__(self):
@@ -18,7 +15,7 @@ class gr_sbhs(gras.Block):
 		
 		# SBHS init
 		self.new_device = Sbhs()
-		self.new_device.connect(42)
+		self.new_device.connect(1)
 		self.new_device.connect_device(0)
 
 
@@ -34,21 +31,30 @@ class gr_sbhs(gras.Block):
 		
 	def work(self, input_items, output_items):
 		
-		if len(input_items[0]) != len(input_items[1]):
-			raise Exception("Heat value vector and Fan Speed Value vector should be of equal length")
+	#	if len(input_items[0]) != len(input_items[1]):
+	#		raise Exception("Heat value vector and Fan Speed Value vector should be of equal length")
 			
 
 		# Assuming input_items[0] and input_items[1] have same LENGTH
 		for heat_items, fan_items in zip(input_items[0], input_items[1]):
-			#Setting Heat
-			self.new_device.setHeat(heat_items)
+			
+			print "HEAT WRITTEN", heat_items
+			
+			# Set heat as 0 for negative values of heat
+			if heat_items < 0:
+				self.new_device.setHeat(0)
+			else:
+				self.new_device.setHeat(heat_items)
+
 			time.sleep(0.5)
 			self.new_device.setFan(fan_items)
 			time.sleep(0.5)
-			
-			# Get temperature
-			output_items[0][:1] =  self.new_device.getTemp()
-			print "Temperature",output_items[0][:1]
+
+
+		# Get temperature
+		output_items[0][:1] =  self.new_device.getTemp()
+
+		print "Temperature",output_items[0][:1]
 
 		#Write a for loop for n_inputs
 		for i in range(len(input_items)):
@@ -57,5 +63,4 @@ class gr_sbhs(gras.Block):
 		self.produce(0,self.n) # Produce from port 0 output_items
 
 	def __del__(self):
-		ser.close()
 		print "destructor"

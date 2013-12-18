@@ -39,6 +39,8 @@ class gr_sbhs(gras.Block):
 		for heat_items, fan_items in zip(input_items[0], input_items[1]):
 			
 			print "HEAT WRITTEN", heat_items
+			
+			# Set heat as 0 for negative values of heat
 			if heat_items < 0:
 				self.new_device.setHeat(0)
 			else:
