@@ -33,7 +33,6 @@ class gr_sbhs(gras.Block):
 		
 	#	if len(input_items[0]) != len(input_items[1]):
 	#		raise Exception("Heat value vector and Fan Speed Value vector should be of equal length")
-			
 
 		# Assuming input_items[0] and input_items[1] have same LENGTH
 		for heat_items, fan_items in zip(input_items[0], input_items[1]):
@@ -49,7 +48,10 @@ class gr_sbhs(gras.Block):
 			time.sleep(0.5)
 			self.new_device.setFan(fan_items)
 			time.sleep(0.5)
-
+		
+		# For Zero Temperatures
+		if not self.new_device.getTemp():
+			raise Exception("Check SBHS connection, try re-plugging it and run scan_machines.py")
 
 		# Get temperature
 		output_items[0][:1] =  self.new_device.getTemp()
@@ -61,6 +63,3 @@ class gr_sbhs(gras.Block):
 			self.consume(i,1) # Consume from port 0 input_items
 
 		self.produce(0,self.n) # Produce from port 0 output_items
-
-	def __del__(self):
-		print "destructor"
