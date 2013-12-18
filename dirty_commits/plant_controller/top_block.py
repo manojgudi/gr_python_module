@@ -2,7 +2,7 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Top Block
-# Generated: Wed Dec 18 01:19:52 2013
+# Generated: Wed Dec 18 13:45:22 2013
 ##################################################
 
 from gnuradio import eng_notation
@@ -24,21 +24,22 @@ class top_block(grc_wxgui.top_block_gui):
 		##################################################
 		# Variables
 		##################################################
+		self.setpoint = setpoint = 37
 		self.samp_rate = samp_rate = 32000
 
 		##################################################
 		# Blocks
 		##################################################
 		self.sbhs_controller_0 = gr_controller.sbhs_controller()
-		self.sbhs_controller_0.set_parameters(4, 1, 2, 1, 30, 1)
+		self.sbhs_controller_0.set_parameters(2, 1, 2, 1, setpoint, 1)
 		    
 		self.grex_subtract_0 = gras.make('/grex/subtract_v_f32_f32', 1)
 		self.grex_subtract_0.set_preload((1, ))
-		self.gr_vector_source_x_0_0 = gr.vector_source_f((100, ), True, 1)
+		self.gr_vector_source_x_0_0 = gr.vector_source_f((40, ), True, 1)
 		self.gr_sbhs_0 = gr_sbhs.gr_sbhs()
 		self.gr_sbhs_0.set_parameters(1)
 		    
-		self.const_source_x_0 = gr.sig_source_f(0, gr.GR_CONST_WAVE, 0, 0, 30)
+		self.const_source_x_0 = gr.sig_source_f(0, gr.GR_CONST_WAVE, 0, 0, setpoint)
 
 		##################################################
 		# Connections
@@ -49,6 +50,13 @@ class top_block(grc_wxgui.top_block_gui):
 		self.connect((self.gr_sbhs_0, 0), (self.grex_subtract_0, 1))
 		self.connect((self.const_source_x_0, 0), (self.grex_subtract_0, 0))
 
+
+	def get_setpoint(self):
+		return self.setpoint
+
+	def set_setpoint(self, setpoint):
+		self.setpoint = setpoint
+		self.const_source_x_0.set_offset(self.setpoint)
 
 	def get_samp_rate(self):
 		return self.samp_rate
