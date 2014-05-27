@@ -4,8 +4,8 @@ import serial
 import time
 from time import sleep
 
-#ser = serial.Serial('/dev/ttyUSB0', baudrate=9600, timeout=1)
-#ser.open()
+ser = serial.Serial('/dev/ttyUSB0', baudrate=9600, timeout=1)
+ser.open()
 
 
 from time import sleep
@@ -18,7 +18,7 @@ from scan_machines import *
 
 
 new_device = Sbhs()
-new_device.connect(1)
+new_device.connect(252)
 new_device.connect_device(0)
 
 

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Tue Dec 17 14:55:40 2013</timestamp>
+  <timestamp>Fri Dec 13 21:55:05 2013</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -84,10 +84,10 @@
     </param>
   </block>
   <block>
-    <key>gr_vector_sink_x</key>
+    <key>gr_vector_source_x</key>
     <param>
       <key>id</key>
-      <value>gr_vector_sink_x_0</value>
+      <value>gr_vector_source_x_0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -98,12 +98,20 @@
       <value>float</value>
     </param>
     <param>
+      <key>vector</key>
+      <value>0, 0, 0,0,0,0,0,1,1,1,1,1,1,1</value>
+    </param>
+    <param>
+      <key>repeat</key>
+      <value>False</value>
+    </param>
+    <param>
       <key>vlen</key>
       <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(790, 232)</value>
+      <value>(167, 135)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -111,10 +119,10 @@
     </param>
   </block>
   <block>
-    <key>gr_sbhs</key>
+    <key>sbhs_controller</key>
     <param>
       <key>id</key>
-      <value>gr_sbhs_0</value>
+      <value>sbhs_controller_0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -126,7 +134,27 @@
     </param>
     <param>
       <key>num_inputs</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>a</key>
+      <value>0.1</value>
+    </param>
+    <param>
+      <key>p</key>
       <value>2</value>
+    </param>
+    <param>
+      <key>i</key>
+      <value>0.5</value>
+    </param>
+    <param>
+      <key>d</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>b</key>
+      <value>10</value>
     </param>
     <param>
       <key>vlen</key>
@@ -138,7 +166,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(549, 55)</value>
+      <value>(514, 145)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -157,7 +185,7 @@
     </param>
     <param>
       <key>file</key>
-      <value>ne2.txt</value>
+      <value>ne.txt</value>
     </param>
     <param>
       <key>type</key>
@@ -173,77 +201,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(791, 146)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>gr_vector_source_x</key>
-    <param>
-      <key>id</key>
-      <value>gr_vector_source_x_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>float</value>
-    </param>
-    <param>
-      <key>vector</key>
-      <value>4,5,6</value>
-    </param>
-    <param>
-      <key>repeat</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(280, 44)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>gr_vector_source_x</key>
-    <param>
-      <key>id</key>
-      <value>gr_vector_source_x_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>float</value>
-    </param>
-    <param>
-      <key>vector</key>
-      <value>40,50,60</value>
-    </param>
-    <param>
-      <key>repeat</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(274.75, 129.5)</value>
+      <value>(885, 177)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -252,24 +210,12 @@
   </block>
   <connection>
     <source_block_id>gr_vector_source_x_0</source_block_id>
-    <sink_block_id>gr_sbhs_0</sink_block_id>
+    <sink_block_id>sbhs_controller_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>gr_vector_source_x_0_0</source_block_id>
-    <sink_block_id>gr_sbhs_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>1</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>gr_sbhs_0</source_block_id>
-    <sink_block_id>gr_vector_sink_x_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>gr_sbhs_0</source_block_id>
+    <source_block_id>sbhs_controller_0</source_block_id>
     <sink_block_id>gr_file_sink_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>

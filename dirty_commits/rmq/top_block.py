@@ -2,7 +2,7 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Top Block
-# Generated: Tue Dec 17 23:04:21 2013
+# Generated: Thu Jan 30 18:05:47 2014
 ##################################################
 
 from gnuradio import eng_notation
@@ -11,7 +11,8 @@ from gnuradio.eng_option import eng_option
 from gnuradio.gr import firdes
 from grc_gnuradio import wxgui as grc_wxgui
 from optparse import OptionParser
-import gr_sbhs
+from sbhs import plot_sink
+import gr_ser
 import wx
 
 class top_block(grc_wxgui.top_block_gui):
@@ -27,22 +28,25 @@ class top_block(grc_wxgui.top_block_gui):
 		##################################################
 		# Blocks
 		##################################################
-		self.gr_vector_source_x_0_0 = gr.vector_source_f((40,50,60), True, 1)
-		self.gr_vector_source_x_0 = gr.vector_source_f((4,5,6), True, 1)
+		self.plot_sink_0 = plot_sink.plot_sink_f(
+			self.GetWin(),
+			title="Scope Plot",
+			vlen=1,
+			decim=1,
+		)
+		self.Add(self.plot_sink_0.win)
 		self.gr_vector_sink_x_0 = gr.vector_sink_f(1)
-		self.gr_sbhs_0 = gr_sbhs.gr_sbhs()
-		self.gr_sbhs_0.set_parameters(1)
+		self.gr_serial_0 = gr_ser.ser()
+		self.gr_serial_0.set_parameters("/dev/ttyACM1", 9600, 8, "N", 1)
 		    
-		self.gr_file_sink_0 = gr.file_sink(gr.sizeof_float*1, "ne2.txt")
-		self.gr_file_sink_0.set_unbuffered(True)
+		self.const_source_x_0 = gr.sig_source_f(0, gr.GR_CONST_WAVE, 0, 0, 1)
 
 		##################################################
 		# Connections
 		##################################################
-		self.connect((self.gr_vector_source_x_0, 0), (self.gr_sbhs_0, 0))
-		self.connect((self.gr_vector_source_x_0_0, 0), (self.gr_sbhs_0, 1))
-		self.connect((self.gr_sbhs_0, 0), (self.gr_vector_sink_x_0, 0))
-		self.connect((self.gr_sbhs_0, 0), (self.gr_file_sink_0, 0))
+		self.connect((self.gr_serial_0, 0), (self.gr_vector_sink_x_0, 0))
+		self.connect((self.gr_serial_0, 0), (self.plot_sink_0, 0))
+		self.connect((self.const_source_x_0, 0), (self.gr_serial_0, 0))
 
 
 	def get_samp_rate(self):
