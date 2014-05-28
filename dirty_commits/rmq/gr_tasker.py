@@ -11,7 +11,7 @@ class tasker(gras.Block):
 
     def __init__(self):
             gras.Block.__init__(self,
-                    name="ser",
+                    name="tasker",
                     in_sig=[numpy.float32],
                     out_sig=[numpy.float32],
                     n=1)
@@ -25,15 +25,13 @@ class tasker(gras.Block):
 
     def work(self, input_items, output_items, queue_name):
 
-
         in0 = input_items[0][:self.n]
         in1 = input_items[1]self:n]
 
         out = output_items[0][:self.n]
 
         # Input is size of output_items to be returned
-
-
+	
         # Send this in0 to worker
         ## TODO CHECK THIS
         self.dumps0 = pickle.dumps(in0)

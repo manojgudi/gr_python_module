@@ -12,7 +12,7 @@ class worker(gras.Block):
 
     def __init__(self):
             gras.Block.__init__(self,
-                    name="ser",
+                    name="worker",
                     in_sig=[numpy.float32],
                     out_sig=[numpy.float32],
                     n=1)
