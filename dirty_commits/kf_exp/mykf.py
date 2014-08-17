@@ -121,9 +121,8 @@ print '------------'
 print V_est
 '''
 
-tt2 = linspace(0,dt,2*duration)
 plt.plot( tt, V_act, '-r.')
 plt.plot( tt, V_meas, '-g.')
-plt.plot( tt2, V_est, '-k.')
+plt.plot( tt, V_est[:10], '-k.')
 
 plt.show()
