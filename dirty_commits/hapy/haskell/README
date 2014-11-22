@@ -1,0 +1,6 @@
+
+To compile, simply type 
+$ make
+
+This is tested code, produces libHSMyModule-0.1.0.0-ghc7.6.3.so (in *nix)
+on successful compilation
